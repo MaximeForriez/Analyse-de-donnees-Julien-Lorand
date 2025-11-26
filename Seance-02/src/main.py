@@ -7,20 +7,18 @@ import matplotlib.pyplot as plt
 with open("./data/resultats-elections-presidentielles-2022-1er-tour.csv","r") as fichier:
     contenu = pd.read_csv(fichier)
     
-#coding:utf8
-#coding:utf8
-# ----------------------------------------------------------
+
+
 # Cours : Analyse de données en géographie - Séance 2
-# Manipulations avec Pandas et Matplotlib
-# ----------------------------------------------------------
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# ----------------------------------------------------------
+
 # Question 1 à 4 : Lecture du fichier CSV
-# ----------------------------------------------------------
+
 
 # Chemin vers le fichier CSV
 csv_path = "./data/resultats-elections-presidentielles-2022-1er-tour.csv"
@@ -29,24 +27,24 @@ csv_path = "./data/resultats-elections-presidentielles-2022-1er-tour.csv"
 with open(csv_path, "r", encoding="utf-8") as fichier:
     contenu = pd.read_csv(fichier)
 
-# ----------------------------------------------------------
+
 # Question 5 : Afficher le contenu
-# ----------------------------------------------------------
+
 print("\n=== Question 5 : Aperçu du contenu ===")
 print(contenu.head())
 
-# ----------------------------------------------------------
+
 # Question 6 : Nombre de lignes et colonnes
-# ----------------------------------------------------------
+
 print("\n=== Question 6 : Dimensions du tableau ===")
 nb_lignes = len(contenu)
 nb_colonnes = len(contenu.columns)
 print(f"Nombre de lignes : {nb_lignes}")
 print(f"Nombre de colonnes : {nb_colonnes}")
 
-# ----------------------------------------------------------
+
 # Question 7 : Nature statistique des variables
-# ----------------------------------------------------------
+
 print("\n=== Question 7 : Types de colonnes ===")
 types_vars = {}
 for col in contenu.columns:
@@ -61,17 +59,17 @@ for col in contenu.columns:
         types_vars[col] = "str"
     print(f"{col} : {types_vars[col]}")
 
-# ----------------------------------------------------------
+
 # Question 8 : Afficher le nom des colonnes
-# ----------------------------------------------------------
+
 print("\n=== Question 8 : Noms des colonnes ===")
 print(contenu.columns)
 
-# ----------------------------------------------------------
+
 # Question 9 : Sélection du nombre des inscrits
-# ----------------------------------------------------------
+
 print("\n=== Question 9 : Colonne 'Inscrits' ===")
-# On cherche une colonne contenant le mot 'Inscrits'
+
 col_inscrits = [c for c in contenu.columns if "Inscrit" in c or "INSCRIT" in c or "inscrit" in c]
 if col_inscrits:
     print(contenu[col_inscrits[0]].head())
@@ -79,9 +77,9 @@ else:
     print("Colonne 'Inscrits' non trouvée. Vérifie le nom exact dans le CSV.")
     print(contenu.columns)
 
-# ----------------------------------------------------------
-# Question 10 : Calcul des effectifs (sommes)
-# ----------------------------------------------------------
+
+# Question 10 : Calcul des effectifs 
+
 print("\n=== Question 10 : Somme des colonnes numériques ===")
 somme_colonnes = {}
 for col, t in types_vars.items():
@@ -90,9 +88,9 @@ for col, t in types_vars.items():
 for col, val in somme_colonnes.items():
     print(f"{col} : {val}")
 
-# ----------------------------------------------------------
+
 # Question 11 : Diagrammes en barres (Inscrits / Votants)
-# ----------------------------------------------------------
+
 print("\n=== Question 11 : Diagrammes en barres ===")
 os.makedirs("images/barres", exist_ok=True)
 
@@ -117,9 +115,9 @@ else:
     print("Impossible de créer les diagrammes : colonnes manquantes.")
     print(contenu.columns)
 
-# ----------------------------------------------------------
-# Question 12 : Diagrammes circulaires (Blancs, Nuls, Exprimés, Abstention)
-# ----------------------------------------------------------
+
+# Question 12 : Diagrammes circulaires 
+
 print("\n=== Question 12 : Diagrammes circulaires ===")
 os.makedirs("images/camemberts", exist_ok=True)
 
@@ -143,9 +141,9 @@ if col_dept and col_blancs and col_nuls and col_exprimes and col_abst:
 else:
     print("Impossible de créer les diagrammes circulaires : colonnes manquantes.")
     print(contenu.columns)
-# ----------------------------------------------------------
+
 # Question 13 : Histogramme de la distribution des inscrits
-# ----------------------------------------------------------
+
 print("\n=== Question 13 : Histogramme ===")
 os.makedirs("images/histogrammes", exist_ok=True)
 
