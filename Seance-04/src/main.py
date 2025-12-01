@@ -11,9 +11,8 @@ os.makedirs("images", exist_ok=True)
 # Code sauvegarde des graphiques
 
 
-# -----------------------------------------
-# -----------------------------------------
-
+def save_discrete(x, pmf, title, filename):
+    plt.figure()
     plt.stem(x, pmf, use_line_collection=True)
     plt.title(title)
     plt.xlabel("Valeurs")
@@ -98,7 +97,6 @@ def pareto_cont(a=2):
 
 # MAIN
 
-# -----------------------------------------
 # TEST DES FONCTIONS
 
 if __name__ == "__main__":
